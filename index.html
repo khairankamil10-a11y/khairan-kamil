@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khairan Kamil – Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    /* ══ THEMES ══ */
+    :root{
+      --bg:#fff8fe;--surface:#fff;
+      --pink:#ffb3d1;--peach:#ffd4a8;--yellow:#fff0a0;
+      --mint:#b8f0d8;--sky:#bae0ff;--lav:#dbb8ff;--lilac:#f0e0ff;
+      --accent1:#f472b6;--accent2:#a78bfa;--accent3:#38bdf8;
+      --text:#2d1f3d;--muted:#9b8aac;
+      --border:rgba(180,130,220,.15);--shadow:rgba(160,110,200,.12);
+      --nav-bg:rgba(255,248,254,.85);
+      --hero-right:linear-gradient(155deg,#f0e0ff 0%,#ffb3d1 55%,#ffd4a8 100%);
+      --contact-bg:linear-gradient(135deg,#f0e0ff,#ffb3d1 50%,#ffd4a8);
+      --apps-bg:linear-gradient(135deg,#fef9ff,#f0e0ff 60%,#fef0ff);
+    }
+    [data-theme="rose"]{
+      --bg:#fff5f7;--surface:#fff;
+      --pink:#fda4af;--peach:#fecdd3;--yellow:#ffe4e6;
+      --mint:#fca5a5;--sky:#f9a8d4;--lav:#fb7185;--lilac:#fce7f3;
+      --accent1:#f43f5e;--accent2:#e11d48;--accent3:#fb7185;
+      --text:#4c0519;--muted:#9f1239;
+      --border:rgba(244,63,94,.15);--shadow:rgba(244,63,94,.1);
+      --nav-bg:rgba(255,245,247,.88);
+      --hero-right:linear-gradient(155deg,#fce7f3 0%,#fda4af 55%,#fecdd3 100%);
+      --contact-bg:linear-gradient(135deg,#fce7f3,#fda4af 50%,#fecdd3);
+      --apps-bg:linear-gradient(135deg,#fff5f7,#fce7f3 60%,#fff1f2);
+    }
+    [data-theme="ocean"]{
+      --bg:#f0f9ff;--surface:#fff;
+      --pink:#bae6fd;--peach:#a5f3fc;--yellow:#cffafe;
+      --mint:#6ee7b7;--sky:#38bdf8;--lav:#818cf8;--lilac:#e0f2fe;
+      --accent1:#0ea5e9;--accent2:#6366f1;--accent3:#06b6d4;
+      --text:#0c4a6e;--muted:#0369a1;
+      --border:rgba(14,165,233,.15);--shadow:rgba(14,165,233,.1);
+      --nav-bg:rgba(240,249,255,.88);
+      --hero-right:linear-gradient(155deg,#e0f2fe 0%,#bae6fd 55%,#a5f3fc 100%);
+      --contact-bg:linear-gradient(135deg,#e0f2fe,#bae6fd 50%,#a5f3fc);
+      --apps-bg:linear-gradient(135deg,#f0f9ff,#e0f2fe 60%,#ecfeff);
+    }
+    [data-theme="forest"]{
+      --bg:#f0fdf4;--surface:#fff;
+      --pink:#bbf7d0;--peach:#a7f3d0;--yellow:#d9f99d;
+      --mint:#6ee7b7;--sky:#34d399;--lav:#86efac;--lilac:#dcfce7;
+      --accent1:#10b981;--accent2:#16a34a;--accent3:#22c55e;
+      --text:#14532d;--muted:#166534;
+      --border:rgba(16,185,129,.15);--shadow:rgba(16,185,129,.1);
+      --nav-bg:rgba(240,253,244,.88);
+      --hero-right:linear-gradient(155deg,#dcfce7 0%,#bbf7d0 55%,#a7f3d0 100%);
+      --contact-bg:linear-gradient(135deg,#dcfce7,#bbf7d0 50%,#a7f3d0);
+      --apps-bg:linear-gradient(135deg,#f0fdf4,#dcfce7 60%,#f7fee7);
+    }
+    [data-theme="sunset"]{
+      --bg:#fff7ed;--surface:#fff;
+      --pink:#fed7aa;--peach:#fdba74;--yellow:#fde68a;
+      --mint:#fca5a5;--sky:#fb923c;--lav:#f97316;--lilac:#ffedd5;
+      --accent1:#f97316;--accent2:#ea580c;--accent3:#fb923c;
+      --text:#431407;--muted:#9a3412;
+      --border:rgba(249,115,22,.15);--shadow:rgba(249,115,22,.1);
+      --nav-bg:rgba(255,247,237,.88);
+      --hero-right:linear-gradient(155deg,#ffedd5 0%,#fed7aa 55%,#fdba74 100%);
+      --contact-bg:linear-gradient(135deg,#ffedd5,#fed7aa 50%,#fdba74);
+      --apps-bg:linear-gradient(135deg,#fff7ed,#ffedd5 60%,#fffbeb);
+    }
+    [data-theme="midnight"]{
+      --bg:#1e1b2e;--surface:#2d2a3e;
+      --pink:#c084fc;--peach:#f0abfc;--yellow:#e879f9;
+      --mint:#818cf8;--sky:#6366f1;--lav:#a78bfa;--lilac:#312e81;
+      --accent1:#c084fc;--accent2:#a78bfa;--accent3:#818cf8;
+      --text:#f5f3ff;--muted:#a5b4fc;
+      --border:rgba(192,132,252,.2);--shadow:rgba(99,66,199,.25);
+      --nav-bg:rgba(30,27,46,.9);
+      --hero-right:linear-gradient(155deg,#312e81 0%,#4c1d95 55%,#5b21b6 100%);
+      --contact-bg:linear-gradient(135deg,#312e81,#4c1d95 50%,#5b21b6);
+      --apps-bg:linear-gradient(135deg,#1e1b2e,#2d2a3e 60%,#252040);
+    }
+    [data-theme="mocha"]{
+      --bg:#1c1410;--surface:#2a1f18;
+      --pink:#d4956a;--peach:#e8b89a;--yellow:#f5d0a9;
+      --mint:#a8956e;--sky:#c4a882;--lav:#b08060;--lilac:#3d2b1f;
+      --accent1:#d4956a;--accent2:#c4a882;--accent3:#e8b89a;
+      --text:#f5e6d3;--muted:#c4a882;
+      --border:rgba(212,149,106,.2);--shadow:rgba(100,60,20,.3);
+      --nav-bg:rgba(28,20,16,.9);
+      --hero-right:linear-gradient(155deg,#3d2b1f 0%,#5c3d2e 55%,#7a5c40 100%);
+      --contact-bg:linear-gradient(135deg,#3d2b1f,#5c3d2e 50%,#7a5c40);
+      --apps-bg:linear-gradient(135deg,#1c1410,#2a1f18 60%,#201a14);
+    }
+
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden;transition:background .4s,color .4s;}
+
+    .bg-blob{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:.45;transition:background .4s;}
+    .bb1{width:400px;height:400px;background:var(--pink);top:-120px;left:-120px;animation:bdrift 16s ease-in-out infinite alternate;}
+    .bb2{width:320px;height:320px;background:var(--lav);top:30%;right:-100px;animation:bdrift 20s ease-in-out infinite alternate-reverse;}
+    .bb3{width:280px;height:280px;background:var(--mint);bottom:-80px;left:5%;animation:bdrift 18s ease-in-out infinite alternate;}
+    .bb4{width:260px;height:260px;background:var(--yellow);bottom:10%;right:10%;animation:bdrift 13s ease-in-out infinite alternate-reverse;}
+    @keyframes bdrift{from{transform:translate(0,0)}to{transform:translate(30px,20px)}}
+
+    /* ── THEME SWITCHER ── */
+    .theme-btn{
+      position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;
+      width:50px;height:50px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      border:none;cursor:pointer;box-shadow:0 4px 20px var(--shadow);
+      display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .theme-btn:hover{transform:scale(1.1);box-shadow:0 8px 28px var(--shadow);}
+    .theme-panel{
+      position:fixed;bottom:4.5rem;right:1.5rem;z-index:299;
+      background:var(--surface);border:1.5px solid var(--border);
+      border-radius:20px;padding:1rem;box-shadow:0 8px 32px var(--shadow);
+      display:none;flex-direction:column;gap:.6rem;min-width:180px;
+      transition:background .4s;
+    }
+    .theme-panel.open{display:flex;}
+    .theme-panel-title{font-size:.68rem;font-weight:800;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;}
+    .theme-option{
+      display:flex;align-items:center;gap:10px;padding:.5rem .7rem;
+      border-radius:12px;cursor:pointer;border:1.5px solid transparent;
+      transition:border-color .2s,background .2s;font-size:.82rem;font-weight:700;color:var(--text);
+      background:none;width:100%;text-align:left;
+    }
+    .theme-option:hover{background:var(--border);}
+    .theme-option.active{border-color:var(--accent1);}
+    .theme-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;}
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:1.2rem;left:50%;transform:translateX(-50%);z-index:200;
+      display:flex;align-items:center;gap:1.4rem;
+      background:var(--nav-bg);backdrop-filter:blur(20px);
+      border:1.5px solid var(--border);border-radius:100px;
+      padding:.6rem 1.6rem;box-shadow:0 4px 24px var(--shadow);
+      white-space:nowrap;transition:background .4s;
+    }
+    .nav-logo{font-weight:900;font-size:1.05rem;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .nav-links{display:flex;gap:1.1rem;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:700;letter-spacing:.03em;transition:color .2s;}
+    .nav-links a:hover{color:var(--text);}
+    .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;}
+    .hamburger span{display:block;width:20px;height:2px;background:var(--muted);border-radius:4px;transition:all .3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(6px)rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6px)rotate(-45deg);}
+    .mob-menu{
+      display:none;position:fixed;inset:0;z-index:190;
+      background:var(--nav-bg);backdrop-filter:blur(20px);
+      flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+    }
+    .mob-menu.open{display:flex;}
+    .mob-menu a{color:var(--text);text-decoration:none;font-size:1.7rem;font-weight:900;}
+    .mob-close{position:absolute;top:1.5rem;right:1.8rem;font-size:1.4rem;cursor:pointer;background:none;border:none;color:var(--muted);}
+
+    main{position:relative;z-index:1;}
+    section{scroll-margin-top:80px;}
+
+    /* ════ HERO ════ */
+    #hero{min-height:100vh;display:grid;grid-template-columns:58% 42%;position:relative;overflow:hidden;}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:7rem 3rem 5rem max(4%,2rem);position:relative;z-index:2;max-width:680px;}
+    .hero-right{
+      background:var(--hero-right);
+      clip-path:polygon(14% 0%,100% 0%,100% 100%,0% 100%);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;padding:5rem 3rem 5rem 6rem;transition:background .4s;
+    }
+    .photo-frame{width:185px;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:3px solid rgba(255,255,255,.6);box-shadow:0 20px 60px var(--shadow);position:relative;z-index:2;flex-shrink:0;}
+    .photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .deco-circle{position:absolute;border-radius:50%;opacity:.28;}
+    .dc1{width:170px;height:170px;background:var(--lav);top:-35px;right:-35px;}
+    .dc2{width:110px;height:110px;background:var(--mint);bottom:25px;left:8px;}
+    .dc3{width:70px;height:70px;background:var(--yellow);top:42%;left:8%;}
+    .float-card{position:absolute;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.9);border-radius:14px;padding:7px 13px;display:flex;align-items:center;gap:7px;font-size:.73rem;font-weight:800;color:#2d1f3d;box-shadow:0 6px 20px rgba(160,80,180,.15);z-index:3;white-space:nowrap;}
+    .fc1{top:20%;left:-8px;animation:bob 3.5s ease-in-out infinite alternate;}
+    .fc2{bottom:24%;right:-12px;animation:bob 4s 1s ease-in-out infinite alternate;}
+    .fc3{bottom:10%;left:12%;animation:bob 3s .5s ease-in-out infinite alternate;}
+    @keyframes bob{from{transform:translateY(0)}to{transform:translateY(-9px)}}
+
+    .hero-badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--lilac),var(--lav));border:1.5px solid var(--border);color:var(--accent1);font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:6px 13px;border-radius:100px;margin-bottom:1.4rem;width:fit-content;}
+    .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent1);animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+    .type-label{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);letter-spacing:.08em;margin-bottom:.4rem;}
+    .hero-name-box{min-height:3.6em;margin-bottom:1.4rem;}
+    .hero-name{font-size:clamp(2.5rem,4.2vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;}
+    #tn1{color:var(--text);}
+    .gradient-text{background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:shimmer 4s linear infinite;}
+    @keyframes shimmer{from{background-position:0%}to{background-position:200%}}
+    .cursor{display:inline-block;width:3px;height:.82em;border-radius:2px;margin-left:2px;background:linear-gradient(180deg,var(--accent1),var(--accent2));animation:blink .7s step-end infinite;vertical-align:text-bottom;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .hero-sub{font-size:.95rem;color:var(--muted);line-height:1.85;max-width:430px;margin-bottom:1.8rem;font-weight:600;}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2rem;}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:.7rem 1.5rem;border-radius:100px;font-weight:800;font-size:.86rem;text-decoration:none;transition:transform .2s,box-shadow .2s;font-family:'Nunito',sans-serif;cursor:pointer;}
+    .btn:hover{transform:translateY(-3px);}
+    .btn-p{background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));color:#fff;box-shadow:0 6px 22px var(--shadow);}
+    .btn-p:hover{box-shadow:0 10px 30px var(--shadow);}
+    .btn-g{background:var(--surface);color:var(--text);border:1.5px solid var(--border);box-shadow:0 4px 14px var(--shadow);}
+    .btn-g:hover{border-color:var(--accent2);color:var(--accent2);}
+    .skill-pills{display:flex;flex-wrap:wrap;gap:7px;}
+    .sp{background:var(--surface);border:1.5px solid var(--border);border-radius:100px;padding:4px 11px;font-size:.74rem;font-weight:700;color:var(--text);box-shadow:0 2px 8px var(--shadow);}
+
+    /* ── SEC HEADER ── */
+    .sec-wrap{max-width:1000px;margin:0 auto;padding:7rem 2rem;}
+    .sec-head{margin-bottom:2.5rem;}
+    .sec-lbl{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);margin-bottom:.4rem;}
+    .sec-lbl::before{content:'';display:block;width:16px;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:10px;}
+    .sec-title{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;color:var(--text);}
+
+    /* ════ ABOUT ════ */
+    .about-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.5rem;}
+    .abt-card{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:1.5rem 1.3rem;box-shadow:0 6px 22px var(--shadow);position:relative;overflow:hidden;transition:background .4s;}
+    .abt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ac);}
+    .abt-card:nth-child(1){--ac:linear-gradient(90deg,var(--accent1),var(--pink));}
+    .abt-card:nth-child(2){--ac:linear-gradient(90deg,var(--accent2),var(--lav));}
+    .abt-card:nth-child(3){--ac:linear-gradient(90deg,var(--accent3),var(--mint));}
+    .abt-emoji{font-size:1.8rem;margin-bottom:.7rem;display:block;}
+    .abt-ttl{font-size:.74rem;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;}
+    .abt-val{font-size:.95rem;font-weight:800;color:var(--text);line-height:1.4;}
+    .about-bio{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:2rem;box-shadow:0 6px 22px var(--shadow);transition:background .4s;}
+    .about-bio p{color:var(--muted);line-height:1.9;font-size:.94rem;font-weight:600;}
+    .about-bio p+p{margin-top:.8rem;}
+    .tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.3rem;}
+    .tag{padding:5px 14px;border-radius:100px;font-size:.78rem;font-weight:800;}
+    .tp{background:var(--lilac);color:var(--accent1);}
+    .tu{background:var(--lilac);color:var(--accent2);}
+    .ts{background:var(--lilac);color:var(--accent3);}
+
+    /* ════ SKILLS ════ */
+    .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+    .sk-card{background:var(--surface);border:1.5px solid var(--border);border-radius:22px;padding:1.8rem;box-shadow:0 6px 26px var(--shadow);transition:transform .3s,box-shadow .3s,background .4s;position:relative;overflow:hidden;}
+    .sk-card:hover{transform:translateY(-4px);box-shadow:0 14px 44px var(--shadow);}
+    .sk-card::before{content:'';position:absolute;inset:0;background:var(--sc-bg);opacity:.04;pointer-events:none;}
+    .skc-lang{grid-column:1;--sc-bg:linear-gradient(135deg,var(--accent1),var(--pink));border-top:4px solid var(--accent1);}
+    .skc-web{grid-column:2;--sc-bg:linear-gradient(135deg,var(--accent2),var(--lav));border-top:4px solid var(--accent2);}
+    .skc-db{grid-column:1/3;--sc-bg:linear-gradient(135deg,var(--accent3),var(--sky));border-top:4px solid var(--accent3);display:flex;align-items:center;gap:2.5rem;}
+    .skc-db .sk-head{flex-shrink:0;}
+    .db-chips{display:flex;gap:10px;flex-wrap:wrap;}
+    .db-chip{background:var(--lilac);border:1.5px solid var(--border);color:var(--accent3);border-radius:14px;padding:10px 18px;font-size:.86rem;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px;transition:background .4s;}
+    .db-chip-icon{font-size:1.4rem;}
+    .sk-head{display:flex;align-items:center;gap:10px;margin-bottom:1.3rem;}
+    .sk-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;background:var(--lilac);}
+    .sk-ttl{font-weight:800;font-size:.88rem;color:var(--text);}
+    .sk-list{display:flex;flex-direction:column;gap:11px;}
+    .sk-row{display:flex;align-items:center;justify-content:space-between;}
+    .sk-name{font-size:.84rem;font-weight:700;color:var(--text);}
+    .sk-track{width:48%;height:7px;background:var(--border);border-radius:100px;overflow:hidden;}
+    .sk-bar{height:100%;border-radius:100px;width:0;transition:width 1.4s cubic-bezier(.22,1,.36,1);}
+    .sb1{background:linear-gradient(90deg,var(--accent1),var(--pink));}
+    .sb2{background:linear-gradient(90deg,var(--accent2),var(--lav));}
+    .sb4{background:linear-gradient(90deg,var(--accent3),var(--sky));}
+
+    /* ════ APPS ════ */
+    #apps{background:var(--apps-bg);padding:7rem 2rem;transition:background .4s;}
+    #apps .sec-wrap{max-width:1000px;margin:0 auto;padding:0;}
+    .apps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
+    .app-card{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:1.4rem 1rem;text-align:center;box-shadow:0 4px 18px var(--shadow);transition:transform .3s,box-shadow .3s,background .4s;display:flex;flex-direction:column;align-items:center;gap:.6rem;}
+    .app-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px var(--shadow);}
+    .app-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--lilac);}
+    .app-name{font-size:.78rem;font-weight:800;color:var(--text);}
+    .app-cat{font-size:.68rem;font-weight:700;color:var(--muted);}
+
+    /* ════ PORTFOLIO ════ */
+    .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;}
+    .proj-card{background:var(--surface);border:1.5px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 6px 26px var(--shadow);transition:transform .3s,box-shadow .3s,background .4s;display:flex;flex-direction:column;}
+    .proj-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px var(--shadow);}
+    .proj-thumb{width:100%;height:170px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden;}
+    .pt1{background:linear-gradient(135deg,var(--lilac),var(--lav));}
+    .pt2{background:linear-gradient(135deg,var(--mint),var(--sky));}
+    .proj-body{padding:1.3rem 1.4rem;flex:1;}
+    .proj-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.8rem;}
+    .proj-badge{padding:3px 10px;border-radius:100px;font-size:.68rem;font-weight:800;background:var(--lilac);color:var(--accent2);}
+    .pb-lrv{background:var(--lilac);color:var(--accent1);}
+    .pb-php{background:var(--lilac);color:var(--accent2);}
+    .pb-sql{background:var(--lilac);color:var(--accent3);}
+    .pb-and{background:var(--mint);color:#065f46;}
+    .pb-html{background:var(--peach);color:#92400e;}
+    .proj-title{font-size:1rem;font-weight:900;color:var(--text);margin-bottom:.4rem;}
+    .proj-desc{font-size:.82rem;color:var(--muted);font-weight:600;line-height:1.7;}
+    .proj-footer{padding:.9rem 1.4rem;border-top:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .proj-link{font-size:.75rem;font-weight:800;color:var(--accent2);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .2s;}
+    .proj-link:hover{color:var(--accent1);}
+    .proj-status{font-size:.68rem;font-weight:800;padding:3px 10px;border-radius:100px;}
+    .ps-done{background:var(--mint);color:#065f46;}
+
+    /* ════ SERTIFIKAT ════ */
+    .sert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;}
+    .sert-card{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 6px 24px var(--shadow);transition:transform .3s,box-shadow .3s,background .4s;display:flex;flex-direction:column;}
+    .sert-card:hover{transform:translateY(-5px);box-shadow:0 14px 42px var(--shadow);}
+    .sert-thumb{width:100%;height:130px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden;}
+    .st1{background:linear-gradient(135deg,var(--lilac),var(--lav));}
+    .st2{background:linear-gradient(135deg,var(--mint),var(--sky));}
+    .st3{background:linear-gradient(135deg,var(--yellow),var(--peach));}
+    .st4{background:linear-gradient(135deg,var(--pink),var(--peach));}
+    .sert-ribbon{position:absolute;top:12px;right:-22px;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:white;font-size:.6rem;font-weight:800;letter-spacing:.06em;padding:3px 30px;transform:rotate(35deg);box-shadow:0 2px 8px var(--shadow);}
+    .sert-body{padding:1.1rem 1.3rem;flex:1;}
+    .sert-issuer{font-size:.68rem;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem;}
+    .sert-title{font-size:.88rem;font-weight:900;color:var(--text);line-height:1.4;margin-bottom:.5rem;}
+    .sert-date{font-size:.72rem;font-weight:700;color:var(--muted);}
+    .sert-footer{padding:.8rem 1.3rem;border-top:1.5px solid var(--border);}
+    .sert-link{font-size:.75rem;font-weight:800;color:var(--accent2);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s;}
+    .sert-link:hover{color:var(--accent1);}
+
+    /* ════ CONTACT ════ */
+    #contact{background:var(--contact-bg);padding:7rem 2rem;text-align:center;position:relative;overflow:hidden;transition:background .4s;}
+    #contact::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.15) 1.5px,transparent 1.5px);background-size:28px 28px;}
+    #contact .sec-lbl{color:var(--accent2);justify-content:center;}
+    #contact .sec-lbl::before{background:linear-gradient(90deg,var(--accent1),var(--accent2));}
+    #contact .sec-title{color:var(--text);margin-bottom:.6rem;}
+    .ct-sub{color:var(--accent2);font-size:.95rem;font-weight:700;margin-bottom:2.5rem;}
+    .ct-wrap{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;position:relative;z-index:1;}
+    .ct-card{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,.9);border-radius:18px;padding:1rem 1.6rem;text-decoration:none;min-width:220px;box-shadow:0 8px 28px var(--shadow);transition:transform .3s,box-shadow .3s;}
+    .ct-card:hover{transform:translateY(-5px);}
+    .ct-ico{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;background:rgba(255,255,255,.6);}
+    .ct-lbl{font-size:.66rem;color:var(--accent2);font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+    .ct-val{font-size:.86rem;color:#2d1f3d;font-weight:800;margin-top:2px;}
+
+    footer{text-align:center;padding:1.6rem;color:var(--muted);font-size:.76rem;font-weight:700;border-top:1.5px solid var(--border);position:relative;z-index:1;}
+    footer .h{color:var(--accent1);}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){.apps-grid{grid-template-columns:repeat(4,1fr);}}
+    @media(max-width:900px){
+      #hero{grid-template-columns:1fr;min-height:auto;}
+      .hero-right{clip-path:none;border-radius:0 0 36px 36px;padding:3rem 2rem;justify-content:center;}
+      .photo-frame{width:155px;}
+      .fc1{top:10%;left:auto;right:10px;display:flex;}
+      .fc2{bottom:28%;right:-8px;display:flex;}
+      .fc3{bottom:8%;left:8%;display:flex;}
+      .hero-left{padding:6.5rem 2rem 2rem;max-width:100%;}
+      .about-row{grid-template-columns:1fr 1fr;}
+      .skc-lang,.skc-web{grid-column:1;}
+      .skc-db{grid-column:1;flex-direction:column;gap:1.2rem;}
+      .skills-grid{grid-template-columns:1fr;}
+      .apps-grid{grid-template-columns:repeat(3,1fr);}
+    }
+    @media(max-width:768px){
+      nav{top:.7rem;padding:.5rem 1.1rem;gap:.8rem;}
+      .nav-links{display:none;}.hamburger{display:flex;}
+      .about-row{grid-template-columns:1fr;}
+      .proj-grid{grid-template-columns:1fr;}
+      .sert-grid{grid-template-columns:1fr;}
+      .apps-grid{grid-template-columns:repeat(2,1fr);}
+      .hero-name{font-size:2.4rem;}
+      .sec-wrap{padding:5rem 1.5rem;}
+      .theme-btn{bottom:1rem;right:1rem;}
+      .theme-panel{bottom:4rem;right:1rem;}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-blob bb1"></div>
+  <div class="bg-blob bb2"></div>
+  <div class="bg-blob bb3"></div>
+  <div class="bg-blob bb4"></div>
+
+  <!-- THEME SWITCHER -->
+  <button class="theme-btn" id="themeBtn" title="Ganti Tema">🎨</button>
+  <div class="theme-panel" id="themePanel">
+    <div class="theme-panel-title">Pilih Tema</div>
+    <button class="theme-option active" data-theme="default" onclick="setTheme('default',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#f472b6,#a78bfa)"></div>Pastel Purple
+    </button>
+    <button class="theme-option" data-theme="rose" onclick="setTheme('rose',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#f43f5e,#fda4af)"></div>Rose Pink
+    </button>
+    <button class="theme-option" data-theme="ocean" onclick="setTheme('ocean',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)"></div>Ocean Blue
+    </button>
+    <button class="theme-option" data-theme="forest" onclick="setTheme('forest',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#10b981,#16a34a)"></div>Forest Green
+    </button>
+    <button class="theme-option" data-theme="sunset" onclick="setTheme('sunset',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#f97316,#fde68a)"></div>Sunset Orange
+    </button>
+    <button class="theme-option" data-theme="midnight" onclick="setTheme('midnight',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#312e81,#c084fc)"></div>Midnight Violet
+    </button>
+    <button class="theme-option" data-theme="mocha" onclick="setTheme('mocha',this)">
+      <div class="theme-dot" style="background:linear-gradient(135deg,#1c1410,#d4956a)"></div>Mocha Dark
+    </button>
+  </div>
+
+  <nav>
+    <div class="nav-logo">✦ KK</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#sertifikat">Certificate</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mob-menu" id="mob">
+    <button class="mob-close" id="mcl">✕</button>
+    <a href="#hero"      onclick="cm()">Home</a>
+    <a href="#about"     onclick="cm()">About</a>
+    <a href="#skills"    onclick="cm()">Skills</a>
+    <a href="#apps"      onclick="cm()">Apps</a>
+    <a href="#portfolio" onclick="cm()">Portfolio</a>
+    <a href="#sertifikat" onclick="cm()">Certificate</a>
+    <a href="#contact"   onclick="cm()">Contact</a>
+  </div>
+
+  <main>
+    <!-- ═══ HERO ═══ -->
+    <section id="hero">
+      <div class="hero-left">
+        <div class="hero-badge"><div class="badge-dot"></div>Siswa SMK Telkom Jakarta</div>
+        <div class="type-label">&gt; hello_world.py</div>
+        <div class="hero-name-box">
+          <div class="hero-name">
+            <div><span id="tn1"></span><span class="cursor" id="c1"></span></div>
+            <div><span id="tn2" class="gradient-text"></span><span class="cursor" id="c2" style="display:none"></span></div>
+          </div>
+        </div>
+        <p class="hero-sub">Siswa RPL yang antusias dalam pengembangan aplikasi dan teknologi informasi. Siap belajar, berkolaborasi, dan tumbuh bersama dunia industri.</p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn btn-p">Lihat Project ✨</a>
+          <a href="#contact"   class="btn btn-g">Hubungi Saya 💌</a>
+        </div>
+        <div class="skill-pills">
+          <span class="sp">🐍 Python</span><span class="sp">🐘 PHP</span>
+          <span class="sp">🌐 HTML &amp; CSS</span><span class="sp">🟨 JavaScript</span><span class="sp">🗄️ MySQL</span>
+          <span class="sp">☕ Java</span><span class="sp">🔧 Git</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="deco-circle dc1"></div>
+        <div class="deco-circle dc2"></div>
+        <div class="deco-circle dc3"></div>
+        <div style="position:relative;z-index:2;">
+          <div class="photo-frame"><img src="foto.jpeg" alt="Khairan Kamil"/></div>
+          <div class="float-card fc1"><span>🚀</span> RPL Student</div>
+          <div class="float-card fc2"><span>💻</span> Full-Stack Learner</div>
+          <div class="float-card fc3"><span>⚡</span> Tech Enthusiast</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <div class="sec-lbl">Tentang Saya</div>
+          <h2 class="sec-title">Siapa Khairan Kamil? 👋</h2>
+        </div>
+        <div class="about-row reveal">
+          <div class="abt-card"><span class="abt-emoji">🏫</span><div class="abt-ttl">Sekolah</div><div class="abt-val">SMK Telkom Jakarta</div></div>
+          <div class="abt-card"><span class="abt-emoji">📚</span><div class="abt-ttl">Jurusan</div><div class="abt-val">Rekayasa Perangkat Lunak</div></div>
+          <div class="abt-card"><span class="abt-emoji">🎯</span><div class="abt-ttl">Status</div><div class="abt-val">Siswa</div></div>
+        </div>
+        <div class="about-bio reveal">
+          <p>Saya merupakan siswa SMK Telkom Jakarta jurusan Rekayasa Perangkat Lunak yang tertarik pada pengembangan aplikasi dan teknologi informasi.</p>
+          <p>Saya memiliki pengalaman membuat beberapa project sederhana seperti aplikasi web berbasis Laravel, aplikasi Android, dan pengelolaan database MySQL. Saya memiliki semangat belajar yang tinggi, mampu bekerja secara mandiri maupun dalam tim, dan siap mengembangkan kemampuan selama mengikuti program Praktik Kerja Lapangan.</p>
+          <div class="tag-row">
+            <span class="tag tp">Python</span><span class="tag tu">PHP</span>
+            <span class="tag ts">Laravel</span><span class="tag tp">Java</span>
+            <span class="tag tu">MySQL</span><span class="tag ts">HTML &amp; CSS</span>
+            <span class="tag tp">JavaScript</span><span class="tag tu">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SKILLS ═══ -->
+    <section id="skills">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <div class="sec-lbl">Keahlian</div>
+          <h2 class="sec-title">Yang Saya Kuasai 💪</h2>
+        </div>
+        <div class="skills-grid reveal">
+          <div class="sk-card skc-lang">
+            <div class="sk-head"><div class="sk-icon">💻</div><div class="sk-ttl">Bahasa Pemrograman</div></div>
+            <div class="sk-list">
+              <div class="sk-row"><span class="sk-name">Python</span><div class="sk-track"><div class="sk-bar sb1" data-w="80%"></div></div></div>
+              <div class="sk-row"><span class="sk-name">Java (Android)</span><div class="sk-track"><div class="sk-bar sb1" data-w="70%"></div></div></div>
+              <div class="sk-row"><span class="sk-name">PHP</span><div class="sk-track"><div class="sk-bar sb1" data-w="75%"></div></div></div>
+            </div>
+          </div>
+          <div class="sk-card skc-web">
+            <div class="sk-head"><div class="sk-icon">🌐</div><div class="sk-ttl">Web Development</div></div>
+            <div class="sk-list">
+              <div class="sk-row"><span class="sk-name">HTML</span><div class="sk-track"><div class="sk-bar sb2" data-w="85%"></div></div></div>
+              <div class="sk-row"><span class="sk-name">CSS</span><div class="sk-track"><div class="sk-bar sb2" data-w="80%"></div></div></div>
+              <div class="sk-row"><span class="sk-name">JavaScript</span><div class="sk-track"><div class="sk-bar sb2" data-w="65%"></div></div></div>
+              <div class="sk-row"><span class="sk-name">Laravel (Dasar)</span><div class="sk-track"><div class="sk-bar sb2" data-w="55%"></div></div></div>
+            </div>
+          </div>
+          <div class="sk-card skc-db">
+            <div class="sk-head"><div class="sk-icon">🗄️</div><div class="sk-ttl">Database</div></div>
+            <div class="db-chips"><div class="db-chip"><span class="db-chip-icon">🐬</span>MySQL</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ APPS ═══ -->
+    <section id="apps">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <div class="sec-lbl">Aplikasi yang Digunakan</div>
+          <h2 class="sec-title">Tools Sehari-hari 🧰</h2>
+        </div>
+        <div class="apps-grid reveal">
+          <div class="app-card"><div class="app-icon">💙</div><div class="app-name">VS Code</div><div class="app-cat">Code Editor</div></div>
+          <div class="app-card"><div class="app-icon">🤖</div><div class="app-name">Android Studio</div><div class="app-cat">Mobile IDE</div></div>
+          <div class="app-card"><div class="app-icon">🔶</div><div class="app-name">Git</div><div class="app-cat">Version Control</div></div>
+          <div class="app-card"><div class="app-icon">🐍</div><div class="app-name">Python IDLE</div><div class="app-cat">Python Editor</div></div>
+          <div class="app-card"><div class="app-icon">🐬</div><div class="app-name">MySQL Workbench</div><div class="app-cat">Database Tool</div></div>
+          <div class="app-card"><div class="app-icon">🧡</div><div class="app-name">Laravel</div><div class="app-cat">PHP Framework</div></div>
+          <div class="app-card"><div class="app-icon">🎨</div><div class="app-name">Figma</div><div class="app-cat">UI Design</div></div>
+          <div class="app-card"><div class="app-icon">💜</div><div class="app-name">XAMPP</div><div class="app-cat">Local Server</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PORTFOLIO ═══ -->
+    <section id="portfolio">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <div class="sec-lbl">Portfolio &amp; Project</div>
+          <h2 class="sec-title">Yang Sudah Dibuat 🛠️</h2>
+        </div>
+        <div class="proj-grid reveal">
+          <div class="proj-card">
+            <div class="proj-thumb pt1">🌱</div>
+            <div class="proj-body">
+              <div class="proj-badges">
+                <span class="proj-badge pb-lrv">Laravel</span>
+                <span class="proj-badge pb-php">PHP</span>
+                <span class="proj-badge pb-sql">MySQL</span>
+                <span class="proj-badge pb-html">HTML/CSS</span>
+              </div>
+              <div class="proj-title">HabitFlow – Aplikasi Habit Tracker</div>
+              <div class="proj-desc">Aplikasi web untuk melacak kebiasaan harian. Fitur: CRUD habit, activity logging, streak tracker, penjadwalan aktivitas, dashboard dengan grafik mingguan, dan autentikasi pengguna.</div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-status ps-done">✅ Selesai</span>
+              <a href="Project_1.pdf" target="_blank" class="proj-link">📄 Lihat Project →</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-thumb pt2">📱</div>
+            <div class="proj-body">
+              <div class="proj-badges">
+                <span class="proj-badge pb-and">Java</span>
+                <span class="proj-badge pb-and">Android Studio</span>
+                <span class="proj-badge pb-html">XML</span>
+              </div>
+              <div class="proj-title">Aplikasi Form Biodata Android</div>
+              <div class="proj-desc">Aplikasi mobile Android dengan desain dark mode modern. Fitur: input biodata lengkap (nama, tanggal lahir, jenis kelamin, agama, no HP, hobi) dan menampilkan hasil dalam tampilan card.</div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-status ps-done">✅ Selesai</span>
+              <a href="Project_2.pdf" target="_blank" class="proj-link">📄 Lihat Project →</a>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-thumb pt1">📦</div>
+            <div class="proj-body">
+              <div class="proj-badges">
+                <span class="proj-badge pb-lrv">Python</span>
+                <span class="proj-badge pb-html">Tkinter</span>
+              </div>
+              <div class="proj-title">Aplikasi Inventaris Barang (Python Tkinter)</div>
+              <div class="proj-desc">Aplikasi desktop berbasis Python menggunakan Tkinter untuk mengelola data inventaris barang melalui antarmuka GUI. Fitur: input data, edit data, hapus data, dan menampilkan data.</div>
+            </div>
+            <div class="proj-footer">
+              <span class="proj-status ps-done">✅ Selesai</span>
+              <a href="Project_3.pdf" target="_blank" class="proj-link">📄 Lihat Project →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SERTIFIKAT ═══ -->
+    <section id="sertifikat">
+      <div class="sec-wrap">
+        <div class="sec-head reveal">
+          <div class="sec-lbl">Sertifikat</div>
+          <h2 class="sec-title">Pencapaian Saya 🏆</h2>
+        </div>
+        <div class="sert-grid reveal">
+          <div class="sert-card">
+            <div class="sert-thumb st1">🏅<div class="sert-ribbon">SERTIFIKAT</div></div>
+            <div class="sert-body">
+              <div class="sert-issuer">SMK Telkom Sandhy Putra Jakarta</div>
+              <div class="sert-title">Uji Kompetensi Level 1 – Fitur Login &amp; Program Jadwal Pelajaran (Python)</div>
+              <div class="sert-date">📅 04 Desember 2024 · Predikat Kompeten</div>
+            </div>
+            <div class="sert-footer">
+              <a href="Sertifikat_3.pdf" target="_blank" class="sert-link">📄 Lihat Sertifikat →</a>
+            </div>
+          </div>
+          <div class="sert-card">
+            <div class="sert-thumb st2">🎖️<div class="sert-ribbon">SERTIFIKAT</div></div>
+            <div class="sert-body">
+              <div class="sert-issuer">SMK Telkom Sandhy Putra Jakarta</div>
+              <div class="sert-title">Uji Kompetensi Level 2 – Aplikasi Kasir GUI Tkinter (Python)</div>
+              <div class="sert-date">📅 12 Juni 2025 · Predikat Kompeten</div>
+            </div>
+            <div class="sert-footer">
+              <a href="Sertifikat_1.pdf" target="_blank" class="sert-link">📄 Lihat Sertifikat →</a>
+            </div>
+          </div>
+          <div class="sert-card">
+            <div class="sert-thumb st3">🥇<div class="sert-ribbon">SERTIFIKAT</div></div>
+            <div class="sert-body">
+              <div class="sert-issuer">SMK Telkom Sandhy Putra Jakarta</div>
+              <div class="sert-title">Uji Kompetensi Level 3 – Website Perhitungan Gaji (PHP, CSS &amp; Bootstrap)</div>
+              <div class="sert-date">📅 26 November 2025 · Predikat Kompeten</div>
+            </div>
+            <div class="sert-footer">
+              <a href="Sertifikat_2.pdf" target="_blank" class="sert-link">📄 Lihat Sertifikat →</a>
+            </div>
+          </div>
+          <div class="sert-card">
+            <div class="sert-thumb st4">🌐<div class="sert-ribbon">SERTIFIKAT</div></div>
+            <div class="sert-body">
+              <div class="sert-issuer">Cisco Networking Academy × JS Institute</div>
+              <div class="sert-title">JavaScript Essentials 1 – Statement of Achievement</div>
+              <div class="sert-date">📅 26 Mei 2026</div>
+            </div>
+            <div class="sert-footer">
+              <a href="Sertifikat_4.pdf" target="_blank" class="sert-link">📄 Lihat Sertifikat →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact">
+      <div style="position:relative;z-index:1;">
+        <div class="sec-lbl" style="justify-content:center;display:inline-flex;margin-bottom:.4rem;">Kontak</div>
+        <h2 class="sec-title" style="margin-bottom:.6rem;">Mari Terhubung! 🤝</h2>
+        <p class="ct-sub">Punya pertanyaan atau mau kolaborasi? Hubungi saya!</p>
+        <div class="ct-wrap">
+          <a href="mailto:khairankamil10@gmail.com" class="ct-card em">
+            <div class="ct-ico">📧</div>
+            <div><div class="ct-lbl">Email</div><div class="ct-val">khairankamil10@gmail.com</div></div>
+          </a>
+          <a href="https://instagram.com/bieehhhh_" target="_blank" class="ct-card ig">
+            <div class="ct-ico">📸</div>
+            <div><div class="ct-lbl">Instagram</div><div class="ct-val">@bieehhhh_</div></div>
+          </a>
+          <a href="https://github.com/khairankamil10-a11y" target="_blank" class="ct-card gh">
+            <div class="ct-ico">🐱</div>
+            <div><div class="ct-lbl">GitHub</div><div class="ct-val">khairankamil10-a11y</div></div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Dibuat dengan <span class="h">♥</span> oleh Khairan Kamil &nbsp;·&nbsp; SMK Telkom Jakarta 🌸</footer>
+
+  <script>
+    // ── Theme Switcher ──
+    const themeBtn   = document.getElementById('themeBtn');
+    const themePanel = document.getElementById('themePanel');
+    themeBtn.addEventListener('click', (e) => { e.stopPropagation(); themePanel.classList.toggle('open'); });
+    document.addEventListener('click', () => themePanel.classList.remove('open'));
+    themePanel.addEventListener('click', e => e.stopPropagation());
+
+    function setTheme(theme, el) {
+      document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
+      document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+      el.classList.add('active');
+      localStorage.setItem('kk-theme', theme);
+      themePanel.classList.remove('open');
+    }
+
+    // Load saved theme
+    const saved = localStorage.getItem('kk-theme');
+    if (saved && saved !== 'default') {
+      document.documentElement.setAttribute('data-theme', saved);
+      const opt = document.querySelector(`[data-theme="${saved}"]`);
+      if (opt) { document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active')); opt.classList.add('active'); }
+    }
+
+    // ── Hamburger ──
+    const hbg = document.getElementById('hbg');
+    const mob = document.getElementById('mob');
+    const mcl = document.getElementById('mcl');
+    hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+    mcl.addEventListener('click', cm);
+    function cm() { hbg.classList.remove('open'); mob.classList.remove('open'); }
+
+    // ── Scroll reveal + skill bars ──
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          e.target.querySelectorAll('.sk-bar').forEach(b => { b.style.width = b.dataset.w; });
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── Typing Loop ──
+    const tn1 = document.getElementById('tn1');
+    const tn2 = document.getElementById('tn2');
+    const c1  = document.getElementById('c1');
+    const c2  = document.getElementById('c2');
+    const LINE1='Khairan', LINE2='Kamil. 🌸';
+    const TS=110, DS=58, PDONE=2200, PEMPTY=700;
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    async function typingLoop() {
+      while(true) {
+        c1.style.display='inline-block'; c2.style.display='none'; tn1.textContent='';
+        for(const ch of LINE1){tn1.textContent+=ch;await sleep(TS);}
+        c1.style.display='none'; c2.style.display='inline-block'; tn2.textContent='';
+        for(const ch of LINE2){tn2.textContent+=ch;await sleep(TS+15);}
+        await sleep(PDONE);
+        while([...tn2.textContent].length>0){const a=[...tn2.textContent];a.pop();tn2.textContent=a.join('');await sleep(DS);}
+        c2.style.display='none'; c1.style.display='inline-block';
+        while(tn1.textContent.length>0){tn1.textContent=tn1.textContent.slice(0,-1);await sleep(DS);}
+        await sleep(PEMPTY);
+      }
+    }
+    setTimeout(typingLoop, 800);
+
+    // ── Drag Tutorial Animation ──
+    function runDragTutorial() {
+      setTimeout(() => {
+        const card = document.querySelector('.fc2');
+        if (!card) return;
+
+        // Ambil posisi card SETELAH halaman render sempurna
+        const rect  = card.getBoundingClientRect();
+        const origL = card.offsetLeft;
+        const origT = card.offsetTop;
+
+        // Gerak hanya sepanjang setengah lebar card — aman di semua layar
+        const moveX =  card.offsetWidth * 0.6;
+        const moveY = -card.offsetHeight * 0.5;
+
+        // Titik mulai kursor = tengah card
+        let curX = rect.left + rect.width  / 2;
+        let curY = rect.top  + rect.height / 2;
+
+        // Pastikan card tidak keluar layar
+        const maxRight  = window.innerWidth  - card.offsetWidth  - 8;
+        const maxBottom = window.innerHeight - card.offsetHeight - 8;
+        const safeEndX  = Math.min(curX + moveX, maxRight);
+        const safeEndY  = Math.max(curY + moveY, 8);
+        const safeMoveX = safeEndX - curX;
+        const safeMoveY = safeEndY - curY;
+
+        // Buat kursor lingkaran
+        const cursor = document.createElement('div');
+        cursor.style.cssText = `
+          position:fixed;
+          width:32px; height:32px;
+          background:rgba(160,80,200,0.85);
+          border:3px solid #fff;
+          border-radius:50%;
+          z-index:9999;
+          pointer-events:none;
+          opacity:0;
+          transform:translate(-50%,-50%);
+          box-shadow:0 2px 12px rgba(0,0,0,.35);
+          transition:opacity .4s, width .25s, height .25s, background .25s;
+        `;
+        document.body.appendChild(cursor);
+
+        cursor.style.left = curX + 'px';
+        cursor.style.top  = curY + 'px';
+
+        // Fade in kursor
+        setTimeout(() => { cursor.style.opacity = '1'; }, 100);
+
+        // Fase grab
+        setTimeout(() => {
+          cursor.style.width  = '24px';
+          cursor.style.height = '24px';
+          cursor.style.background = 'rgba(100,30,160,0.9)';
+
+          card.style.right  = 'auto';
+          card.style.bottom = 'auto';
+          card.style.animation = 'none';
+
+          // 70 steps x 25ms = ~1.75 detik, pelan & smooth
+          let progress = 0;
+          const steps = 70;
+          const interval = setInterval(() => {
+            progress++;
+            const t    = progress / steps;
+            const ease = t < .5 ? 2*t*t : -1+(4-2*t)*t;
+
+            curX = (rect.left + rect.width/2)  + safeMoveX * ease;
+            curY = (rect.top  + rect.height/2) + safeMoveY * ease;
+
+            cursor.style.left = curX + 'px';
+            cursor.style.top  = curY + 'px';
+
+            const parent = card.offsetParent.getBoundingClientRect();
+            card.style.left = (curX - parent.left - card.offsetWidth/2)  + 'px';
+            card.style.top  = (curY - parent.top  - card.offsetHeight/2) + 'px';
+
+            if (progress >= steps) {
+              clearInterval(interval);
+
+              cursor.style.width  = '32px';
+              cursor.style.height = '32px';
+              cursor.style.background = 'rgba(160,80,200,0.85)';
+
+              // Kembalikan card ke posisi asal
+              setTimeout(() => {
+                card.style.transition = 'left .7s ease, top .7s ease';
+                card.style.left = origL + 'px';
+                card.style.top  = origT + 'px';
+                cursor.style.opacity = '0';
+
+                setTimeout(() => {
+                  cursor.remove();
+                  card.style.transition = '';
+                  card.style.animation  = '';
+                }, 800);
+              }, 400);
+            }
+          }, 25);
+        }, 900);
+      }, 2500);
+    }
+
+    runDragTutorial();
+
+    // ── Draggable Float Cards ──
+    document.querySelectorAll('.float-card').forEach(card => {
+      card.style.cursor = 'grab';
+      let isDragging = false, startX, startY, initLeft, initTop;
+
+      function dragStart(x, y) {
+        isDragging = true;
+        startX = x; startY = y;
+        const rect = card.getBoundingClientRect();
+        const parent = card.offsetParent.getBoundingClientRect();
+        initLeft = rect.left - parent.left;
+        initTop  = rect.top  - parent.top;
+        card.style.left = initLeft + 'px';
+        card.style.top  = initTop  + 'px';
+        card.style.right = 'auto';
+        card.style.bottom = 'auto';
+        card.style.cursor = 'grabbing';
+        card.style.animation = 'none';
+        card.style.zIndex = '99';
+        card.style.boxShadow = '0 12px 32px rgba(160,80,180,.35)';
+      }
+
+      function dragMove(x, y) {
+        if (!isDragging) return;
+        card.style.left = (initLeft + x - startX) + 'px';
+        card.style.top  = (initTop  + y - startY) + 'px';
+      }
+
+      function dragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        card.style.cursor = 'grab';
+        card.style.zIndex = '3';
+        card.style.boxShadow = '';
+        card.style.animation = '';
+      }
+
+      // Mouse
+      card.addEventListener('mousedown', e => { e.preventDefault(); dragStart(e.clientX, e.clientY); });
+      document.addEventListener('mousemove', e => dragMove(e.clientX, e.clientY));
+      document.addEventListener('mouseup', dragEnd);
+
+      // Touch
+      card.addEventListener('touchstart', e => { const t = e.touches[0]; dragStart(t.clientX, t.clientY); }, { passive: true });
+      card.addEventListener('touchmove',  e => { e.preventDefault(); const t = e.touches[0]; dragMove(t.clientX, t.clientY); }, { passive: false });
+      card.addEventListener('touchend', dragEnd);
+    });
+  </script>
+</body>
+</html>
